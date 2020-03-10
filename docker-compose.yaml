@@ -1,5 +1,7 @@
 version: '3'
+
 services:
+  
   service-1-api:
     build: ./service-1-api  # image: habeebcycle/gateway-service-1-api:v1
     ports:
@@ -13,7 +15,6 @@ services:
   service-api-gateway:
     build: ./service-api-gateway  # image: habeebcycle/gateway-service-api-gateway:v1
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
       - SERVER-1-API=http://service-1-api:8081/
       - SERVER-2-API=http://service-2-api:8082/
     restart: on-failure
