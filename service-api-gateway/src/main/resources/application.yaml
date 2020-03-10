@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+server-1-api: ${SERVER-1-API}
+server-2-api: ${SERVER-2-API}
+
+# If you want to use the application properties instead of config file,
+# uncomment the lines below:
+
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: service1Module
+#        uri: http://localhost:8081/
+#        predicates:
+#        - Path=/service-1/**
+#      - id: service2Module
+#        uri: http://localhost:8082/
+#        predicates:
+#        - Path=/service-2/**

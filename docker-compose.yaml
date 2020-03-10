@@ -1,0 +1,23 @@
+version: '3'
+services:
+  service-1-api:
+    build: ./service-1-api  # image: habeebcycle/gateway-service-1-api:v1
+    ports:
+      - 8081:8081
+
+  service-2-api:
+    build: ./service-2-api  # image: habeebcycle/gateway-service-2-api:v1
+    ports:
+      - 8082:8082     
+  
+  service-api-gateway:
+    build: ./service-api-gateway  # image: habeebcycle/gateway-service-api-gateway:v1
+    environment:
+      - SERVER-1-API=http://service-1-api:8081/
+      - SERVER-2-API=http://service-2-api:8082/
+    restart: on-failure
+    depends_on:
+      - service-1-api
+      - service-2-api
+    ports:
+      - 8080:8080
